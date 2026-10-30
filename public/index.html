@@ -1,0 +1,181 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="dark">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Preet Patel — Full Stack &amp; Software Developer</title>
+<meta name="description" content="Portfolio of Preet Patel — full stack and software developer in Ahmedabad, Gujarat, working across web, AI and cloud computing.">
+<meta name="theme-color" content="#0F1419">
+<meta property="og:title" content="Preet Patel — Full Stack & Software Developer">
+<meta property="og:description" content="Clean, functional software across the stack, with a focus on applied AI.">
+<meta property="og:type" content="website">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' rx='6' fill='%230F1419'/%3E%3Ctext x='16' y='23' font-family='Georgia,serif' font-size='20' font-weight='bold' text-anchor='middle' fill='%23E8A33D'%3EP%3C/text%3E%3C/svg%3E">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,300;0,9..144,500;0,9..144,600;1,9..144,500&family=Inter:wght@300;400;500;600&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="/css/style.css">
+<script src="/js/theme.js"></script>
+</head>
+<body>
+
+<div class="progress" id="progress"></div>
+
+<header class="site-header">
+  <nav class="nav" aria-label="Main">
+    <a href="#top" class="logo" aria-label="Home">Preet<span>.</span></a>
+    <div class="nav-links" id="navLinks">
+      <a href="#about">About</a>
+      <a href="#skills">Skills</a>
+      <a href="#projects">Projects</a>
+      <a href="#contact">Contact</a>
+    </div>
+    <div class="nav-tools">
+      <button class="icon-btn" id="themeBtn" type="button" aria-label="Toggle light and dark theme">
+        <svg class="icon-moon" viewBox="0 0 24 24"><path d="M21 12.8A9 9 0 1 1 11.2 3a7 7 0 0 0 9.8 9.8z"/></svg>
+        <svg class="icon-sun" viewBox="0 0 24 24"><circle cx="12" cy="12" r="4"/><path d="M12 2v2M12 20v2M4.9 4.9l1.4 1.4M17.7 17.7l1.4 1.4M2 12h2M20 12h2M4.9 19.1l1.4-1.4M17.7 6.3l1.4-1.4"/></svg>
+      </button>
+      <button class="icon-btn menu-btn" id="menuBtn" type="button" aria-label="Open menu" aria-expanded="false" aria-controls="navLinks">
+        <svg viewBox="0 0 24 24"><path d="M4 7h16M4 12h16M4 17h16"/></svg>
+      </button>
+    </div>
+  </nav>
+</header>
+
+<main id="top">
+  <!-- ================= HERO ================= -->
+  <section class="hero" id="hero">
+    <svg class="jali-bg" viewBox="0 0 1040 800" preserveAspectRatio="xMidYMid slice" aria-hidden="true">
+      <defs>
+        <pattern id="jali" width="80" height="80" patternUnits="userSpaceOnUse">
+          <path d="M40 0 L80 40 L40 80 L0 40 Z" fill="none" stroke="#E8A33D" stroke-width="1"/>
+          <circle cx="40" cy="40" r="6" fill="none" stroke="#E8A33D" stroke-width="1"/>
+        </pattern>
+      </defs>
+      <rect width="1040" height="800" fill="url(#jali)"/>
+    </svg>
+    <div class="hero-glow" id="heroGlow" aria-hidden="true"></div>
+
+    <div class="wrap">
+      <div class="eyebrow" data-bind="year_label">2026</div>
+      <h1 id="heroName">Patel <em>Preet</em><br>Ashokkumar</h1>
+      <div class="titles">
+        <span data-bind="headline">Full Stack &amp; Software Developer</span>
+        <span class="dot">·</span>
+        <span data-bind="subheadline">AI &amp; Cloud Computing</span>
+      </div>
+      <div class="typed-line" aria-live="off"><span class="prompt">&gt;</span><span id="typed"></span><span class="caret"></span></div>
+      <div class="location">
+        <svg viewBox="0 0 24 24" stroke-linecap="round" stroke-linejoin="round"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0Z"/><circle cx="12" cy="10" r="3"/></svg>
+        <span data-bind="location">Ahmedabad, Gujarat</span>
+      </div>
+      <div class="hero-cta">
+        <a class="btn primary" href="#projects">View my work
+          <svg viewBox="0 0 24 24"><path d="M5 12h14M13 6l6 6-6 6"/></svg>
+        </a>
+        <a class="btn" href="#contact">Get in touch</a>
+      </div>
+    </div>
+
+    <div class="scroll-cue"><span>SCROLL</span><span class="line"></span></div>
+  </section>
+
+  <!-- ================= ABOUT ================= -->
+  <section class="block" id="about">
+    <div class="wrap">
+      <div class="section-head reveal"><span class="section-num">01</span><h2>About</h2></div>
+      <div class="about-grid">
+        <p class="about-lede reveal" data-bind="about_lede"></p>
+        <div class="about-body reveal">
+          <p data-bind="about_1"></p>
+          <p data-bind="about_2"></p>
+        </div>
+        <div class="stats reveal" id="stats"></div>
+        <div class="about-facts reveal">
+          <div><div class="fact-label">Based in</div><div class="fact-value" data-bind="location"></div></div>
+          <div><div class="fact-label">Focus</div><div class="fact-value" data-bind="focus"></div></div>
+          <div><div class="fact-label">Interest</div><div class="fact-value" data-bind="interest"></div></div>
+          <div><div class="fact-label">Status</div><div class="fact-value"><span class="status-dot"></span><span data-bind="status"></span></div></div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ================= SKILLS ================= -->
+  <section class="block alt" id="skills">
+    <div class="wrap">
+      <div class="section-head reveal"><span class="section-num">02</span><h2>Skills</h2></div>
+      <div id="skillsRoot"></div>
+    </div>
+  </section>
+
+  <!-- ================= PROJECTS ================= -->
+  <section class="block" id="projects">
+    <div class="wrap">
+      <div class="section-head reveal"><span class="section-num">03</span><h2>Projects</h2></div>
+      <div class="filters reveal" id="filters" role="group" aria-label="Filter projects by technology"></div>
+      <div id="projectsRoot"></div>
+    </div>
+  </section>
+
+  <!-- ================= CONTACT ================= -->
+  <section class="block alt" id="contact">
+    <div class="wrap">
+      <div class="section-head reveal"><span class="section-num">04</span><h2>Contact</h2></div>
+      <div class="contact-grid">
+        <div class="contact-intro reveal">
+          <h3>Have a project in mind, or just want to say hello?</h3>
+          <p>Send me a message and I'll get back to you as soon as I can. You can also find me on the links below.</p>
+          <div class="contact-links" id="contactLinks"></div>
+        </div>
+
+        <form class="contact-form reveal" id="contactForm" novalidate>
+          <div class="row-2">
+            <div class="field">
+              <label for="cName">Name</label>
+              <input id="cName" name="name" type="text" autocomplete="name" maxlength="100" required>
+              <div class="err" data-err="name"></div>
+            </div>
+            <div class="field">
+              <label for="cEmail">Email</label>
+              <input id="cEmail" name="email" type="email" autocomplete="email" maxlength="200" required>
+              <div class="err" data-err="email"></div>
+            </div>
+          </div>
+          <div class="field">
+            <label for="cSubject">Subject <span class="mono">(optional)</span></label>
+            <input id="cSubject" name="subject" type="text" maxlength="150">
+          </div>
+          <div class="field">
+            <label for="cMessage">Message</label>
+            <textarea id="cMessage" name="message" maxlength="3000" required></textarea>
+            <div class="err" data-err="message"></div>
+          </div>
+          <!-- Honeypot: real visitors never see or fill this -->
+          <div class="hp" aria-hidden="true">
+            <label for="cWebsite">Website</label>
+            <input id="cWebsite" name="website" type="text" tabindex="-1" autocomplete="off">
+          </div>
+          <div class="form-foot">
+            <button class="btn primary" type="submit" id="sendBtn">Send message
+              <svg viewBox="0 0 24 24"><path d="M22 2 11 13M22 2l-7 20-4-9-9-4 20-7z"/></svg>
+            </button>
+            <span class="form-status" id="formStatus" role="status" aria-live="polite"></span>
+            <span class="counter" id="counter">0 / 3000</span>
+          </div>
+        </form>
+      </div>
+    </div>
+  </section>
+</main>
+
+<footer class="site-footer">
+  © <span id="year">2026</span> <span data-bind="short_name">Preet Patel</span> · <span data-bind="location">Ahmedabad, Gujarat</span>
+</footer>
+
+<button class="icon-btn to-top" id="toTop" type="button" aria-label="Back to top">
+  <svg viewBox="0 0 24 24"><path d="M12 19V5M5 12l7-7 7 7"/></svg>
+</button>
+
+<script src="/js/main.js" defer></script>
+</body>
+</html>

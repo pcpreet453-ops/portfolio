@@ -1,0 +1,140 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="dark">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="robots" content="noindex, nofollow">
+<title>Admin — Preet Patel</title>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,500;0,9..144,600;1,9..144,500&family=Inter:wght@400;500;600&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="/css/style.css">
+<link rel="stylesheet" href="/admin/admin.css">
+<script src="/js/theme.js"></script>
+</head>
+<body class="admin">
+
+<!-- ============ LOGIN ============ -->
+<section class="login" id="loginView" hidden>
+  <form class="login-card" id="loginForm">
+    <div class="logo">Preet<span>.</span> <small class="mono">admin</small></div>
+    <h1>Sign in</h1>
+    <p>Manage your projects, skills, profile and messages.</p>
+    <div class="field">
+      <label for="pw">Password</label>
+      <input id="pw" type="password" autocomplete="current-password" required autofocus>
+    </div>
+    <div class="form-status bad" id="loginErr" role="alert"></div>
+    <button class="btn primary" type="submit">Sign in</button>
+    <a class="back" href="/">← Back to site</a>
+  </form>
+</section>
+
+<!-- ============ APP ============ -->
+<div class="shell" id="appView" hidden>
+  <aside class="side">
+    <div class="logo">Preet<span>.</span> <small class="mono">admin</small></div>
+    <nav class="tabs" id="tabs">
+      <button data-tab="dash" class="active">Dashboard</button>
+      <button data-tab="messages">Messages <em class="pill" id="unreadPill" hidden>0</em></button>
+      <button data-tab="projects">Projects</button>
+      <button data-tab="skills">Skills</button>
+      <button data-tab="profile">Profile</button>
+    </nav>
+    <div class="side-foot">
+      <a href="/" target="_blank" rel="noopener">View site ↗</a>
+      <button id="themeBtn" type="button">Toggle theme</button>
+      <button id="logoutBtn" type="button">Sign out</button>
+    </div>
+  </aside>
+
+  <main class="content">
+    <div class="toast" id="toast" role="status" aria-live="polite"></div>
+
+    <!-- Dashboard -->
+    <section class="panel" id="tab-dash">
+      <h2>Dashboard</h2>
+      <div class="cards" id="statCards"></div>
+      <h3>Visits — last 14 days</h3>
+      <div class="chart" id="visitChart" aria-label="Visits chart"></div>
+    </section>
+
+    <!-- Messages -->
+    <section class="panel" id="tab-messages" hidden>
+      <h2>Messages</h2>
+      <div id="messageList"></div>
+    </section>
+
+    <!-- Projects -->
+    <section class="panel" id="tab-projects" hidden>
+      <div class="panel-head"><h2>Projects</h2><button class="btn primary" id="newProject" type="button">+ New project</button></div>
+      <form class="editor" id="projectForm" hidden>
+        <input type="hidden" name="id">
+        <div class="field"><label for="pTitle">Title</label><input id="pTitle" name="title" maxlength="120" required></div>
+        <div class="field"><label for="pDesc">Description</label><textarea id="pDesc" name="description" maxlength="800" required></textarea></div>
+        <div class="field"><label for="pTags">Tags <span class="mono">(comma separated)</span></label><input id="pTags" name="tags" placeholder="React, Node.js, MongoDB"></div>
+        <div class="row-2">
+          <div class="field"><label for="pLive">Live URL</label><input id="pLive" name="live_url" type="url" placeholder="https://"></div>
+          <div class="field"><label for="pRepo">GitHub / repo URL</label><input id="pRepo" name="repo_url" type="url" placeholder="https://github.com/..."></div>
+        </div>
+        <label class="check"><input type="checkbox" name="featured"> Mark as featured</label>
+        <div class="form-foot">
+          <button class="btn primary" type="submit">Save project</button>
+          <button class="btn" type="button" id="cancelProject">Cancel</button>
+          <span class="form-status bad" id="projectErr"></span>
+        </div>
+      </form>
+      <div id="projectList"></div>
+    </section>
+
+    <!-- Skills -->
+    <section class="panel" id="tab-skills" hidden>
+      <div class="panel-head"><h2>Skills</h2></div>
+      <form class="editor inline" id="skillForm">
+        <input type="hidden" name="id">
+        <div class="field"><label for="sName">Name</label><input id="sName" name="name" maxlength="50" required></div>
+        <div class="field"><label for="sCat">Category</label><input id="sCat" name="category" maxlength="40" list="catList" placeholder="Frontend"><datalist id="catList"></datalist></div>
+        <div class="field"><label for="sLevel">Level <span class="mono" id="sLevelVal">80</span></label><input id="sLevel" name="level" type="range" min="0" max="100" value="80"></div>
+        <div class="field btns"><button class="btn primary" type="submit" id="skillSave">Add skill</button><button class="btn" type="button" id="skillCancel" hidden>Cancel</button></div>
+      </form>
+      <div id="skillList"></div>
+    </section>
+
+    <!-- Profile -->
+    <section class="panel" id="tab-profile" hidden>
+      <h2>Profile &amp; content</h2>
+      <form class="editor" id="profileForm">
+        <div class="row-2">
+          <div class="field"><label for="f_full_name">Full name (hero)</label><input id="f_full_name" name="full_name" maxlength="120"></div>
+          <div class="field"><label for="f_short_name">Short name</label><input id="f_short_name" name="short_name" maxlength="80"></div>
+        </div>
+        <div class="row-2">
+          <div class="field"><label for="f_headline">Headline</label><input id="f_headline" name="headline" maxlength="120"></div>
+          <div class="field"><label for="f_subheadline">Sub-headline</label><input id="f_subheadline" name="subheadline" maxlength="120"></div>
+        </div>
+        <div class="row-2">
+          <div class="field"><label for="f_location">Location</label><input id="f_location" name="location" maxlength="120"></div>
+          <div class="field"><label for="f_year_label">Hero label</label><input id="f_year_label" name="year_label" maxlength="20"></div>
+        </div>
+        <div class="field"><label for="f_roles">Typed roles <span class="mono">(separate with |)</span></label><input id="f_roles" name="roles" maxlength="300"></div>
+        <div class="field"><label for="f_about_lede">About — lead sentence</label><textarea id="f_about_lede" name="about_lede" maxlength="300"></textarea></div>
+        <div class="field"><label for="f_about_1">About — paragraph 1</label><textarea id="f_about_1" name="about_1" maxlength="700"></textarea></div>
+        <div class="field"><label for="f_about_2">About — paragraph 2</label><textarea id="f_about_2" name="about_2" maxlength="700"></textarea></div>
+        <div class="row-2">
+          <div class="field"><label for="f_focus">Focus</label><input id="f_focus" name="focus" maxlength="80"></div>
+          <div class="field"><label for="f_interest">Interest</label><input id="f_interest" name="interest" maxlength="80"></div>
+        </div>
+        <div class="field"><label for="f_status">Status</label><input id="f_status" name="status" maxlength="80"></div>
+        <h3>Contact links</h3>
+        <div class="field"><label for="f_email">Email</label><input id="f_email" name="email" type="email" maxlength="200"></div>
+        <div class="row-2">
+          <div class="field"><label for="f_github">GitHub URL</label><input id="f_github" name="github" maxlength="300"></div>
+          <div class="field"><label for="f_linkedin">LinkedIn URL</label><input id="f_linkedin" name="linkedin" maxlength="300"></div>
+        </div>
+        <div class="form-foot"><button class="btn primary" type="submit">Save changes</button><span class="form-status bad" id="profileErr"></span></div>
+      </form>
+    </section>
+  </main>
+</div>
+
+<script src="/admin/admin.js" defer></script>
+</body>
+</html>
